@@ -1,0 +1,12 @@
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+
+Package.resolved
+
+/out
+/Sources/CSkia/include/include/c
+
+*.png
