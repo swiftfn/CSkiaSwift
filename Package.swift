@@ -14,8 +14,14 @@ let package = Package(
                 .unsafeFlags(["-Lout/mac"])
             ]),
         .target(
-            name: "Demo",
-            dependencies: ["CSkia"])
+            name: "Swifia",
+            dependencies: ["CSkia"]),
+        .target(
+            name: "DemoCSkia",
+            dependencies: ["CSkia"]),
+        .target(
+            name: "DemoSwifia",
+            dependencies: ["Swifia"])
     ],
     cxxLanguageStandard: .cxx14
 )
