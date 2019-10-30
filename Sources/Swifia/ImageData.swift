@@ -1,10 +1,11 @@
 import CSkia
 
 public class ImageData {
-  public static func empty() -> ImageData {
-    let raw = sk_data_new_empty()
-    return ImageData(raw!)
-  }
+  // https://bugs.chromium.org/p/skia/issues/detail?id=9585
+  // public static func empty() -> ImageData {
+  //   let raw = sk_data_new_empty()
+  //   return ImageData(raw!)
+  // }
 
   public static func copy(src: UnsafeRawPointer, length: Int) -> ImageData {
     let raw = sk_data_new_with_copy(src, length)
