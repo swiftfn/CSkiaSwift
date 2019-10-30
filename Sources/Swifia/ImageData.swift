@@ -35,7 +35,7 @@ public class ImageData {
     sk_data_unref(raw)
   }
 
-  public func newSubset(src: ImageData, offset: Int, length: Int) -> ImageData {
+  public func subset(src: ImageData, offset: Int, length: Int) -> ImageData {
     let raw = sk_data_new_subset(src.raw, offset, length)
     return ImageData(raw!)
   }
