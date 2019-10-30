@@ -42,7 +42,7 @@ struct Canvas {
   }
 
   func concat(matrix: Matrix) {
-    sk_canvas_concat(raw, matrix)
+    sk_canvas_concat(raw, &matrix.raw)
   }
 
   func clipRect(rect: Rect) {
@@ -87,6 +87,6 @@ struct Canvas {
   }
 
   func drawPicture(picture: Picture, matrix: Matrix, paint: Paint) {
-    sk_canvas_draw_picture(raw, picture.raw, matrix.raw, paint.raw)
+    sk_canvas_draw_picture(raw, picture.raw, &matrix.raw, paint.raw)
   }
 }
