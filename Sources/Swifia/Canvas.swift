@@ -30,7 +30,9 @@ public struct Canvas {
   }
 
   public func rotateDegrees(_ degrees: Float) {
-    sk_canvas_rotate_degrees(raw, degrees)
+    // https://bugs.chromium.org/p/skia/issues/detail?id=9584
+    let radians = degrees * .pi / 180
+    sk_canvas_rotate_radians(raw, radians)
   }
 
   public func rotateRadians(_ radians: Float) {
