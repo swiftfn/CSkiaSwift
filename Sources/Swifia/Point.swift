@@ -1,6 +1,6 @@
 import CSkia
 
-struct Point {
+public struct Point {
   let x: Float;
   let y: Float;
 

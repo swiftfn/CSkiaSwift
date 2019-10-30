@@ -1,14 +1,14 @@
 import CSkia
 
 // Canvas has no deinit, thus it can be a struct, no need to be a class
-struct Canvas {
+public struct Canvas {
   let raw: OpaquePointer
 
-  func save() {
+  public func save() {
     sk_canvas_save(raw)
   }
 
-  func saveLayer(rect: Rect?, paint: Paint?) {
+  public func saveLayer(_ rect: Rect?, _ paint: Paint?) {
     if let r = rect {
       var cr = r.toSk()
       sk_canvas_save_layer(raw, &cr, paint?.raw)
@@ -17,76 +17,76 @@ struct Canvas {
     }
   }
 
-  func restore() {
+  public func restore() {
     sk_canvas_restore(raw)
   }
 
-  func translate(dx: Float, dy: Float) {
+  public func translate(_ dx: Float, _ dy: Float) {
     sk_canvas_translate(raw, dx, dy)
   }
 
-  func scale(sx: Float, sy: Float) {
+  public func scale(_ sx: Float, _ sy: Float) {
     sk_canvas_scale(raw, sx, sy)
   }
 
-  func rotateDegrees(degrees: Float) {
+  public func rotateDegrees(_ degrees: Float) {
     sk_canvas_rotate_degrees(raw, degrees)
   }
 
-  func rotateRadians(radians: Float) {
+  public func rotateRadians(_ radians: Float) {
     sk_canvas_rotate_radians(raw, radians)
   }
 
-  func skew(sx: Float, sy: Float) {
+  public func skew(_ sx: Float, _ sy: Float) {
     sk_canvas_skew(raw, sx, sy)
   }
 
-  func concat(matrix: Matrix) {
+  public func concat(_ matrix: Matrix) {
     sk_canvas_concat(raw, &matrix.raw)
   }
 
-  func clipRect(rect: Rect) {
+  public func clipRect(_ rect: Rect) {
     var r = rect.toSk()
     sk_canvas_clip_rect(raw, &r)
   }
 
-  func clipPath(path: Path) {
+  public func clipPath(_ path: Path) {
     sk_canvas_clip_path(raw, path.raw)
   }
 
-  func drawPaint(paint: Paint) {
+  public func drawPaint(_ paint: Paint) {
     sk_canvas_draw_paint(raw, paint.raw)
   }
 
-  func drawRect(rect: Rect, paint: Paint) {
+  public func drawRect(_ rect: Rect, _ paint: Paint) {
     var r = rect.toSk()
     sk_canvas_draw_rect(raw, &r, paint.raw)
   }
 
-  func drawCircle(cx: Float, cy: Float, rad: Float, paint: Paint) {
+  public func drawCircle(_ cx: Float, _ cy: Float, _ rad: Float, _ paint: Paint) {
     sk_canvas_draw_circle(raw, cx, cy, rad, paint.raw)
   }
 
-  func drawOval(rect: Rect, paint: Paint) {
+  public func drawOval(_ rect: Rect, _ paint: Paint) {
     var r = rect.toSk()
     sk_canvas_draw_oval(raw, &r, paint.raw)
   }
 
-  func drawPath(path: Path, paint: Paint) {
+  public func drawPath(_ path: Path, _ paint: Paint) {
     sk_canvas_draw_path(raw, path.raw, paint.raw)
   }
 
-  func drawImage(image: Image, x: Float, y: Float, paint: Paint) {
+  public func drawImage(_ image: Image, _ x: Float, _ y: Float, _ paint: Paint) {
     sk_canvas_draw_image(raw, image.raw, x, y, paint.raw)
   }
 
-  func drawImageRect(image: Image, src: Rect, dst: Rect, paint: Paint) {
+  public func drawImageRect(_ image: Image, _ src: Rect, _ dst: Rect, _ paint: Paint) {
     var s = src.toSk()
     var d = dst.toSk()
     sk_canvas_draw_image_rect(raw, image.raw, &s, &d, paint.raw)
   }
 
-  func drawPicture(picture: Picture, matrix: Matrix, paint: Paint) {
+  public func drawPicture(_ picture: Picture, _ matrix: Matrix, _ paint: Paint) {
     sk_canvas_draw_picture(raw, picture.raw, &matrix.raw, paint.raw)
   }
 }

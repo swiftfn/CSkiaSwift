@@ -1,9 +1,9 @@
 import CSkia
 
-class Paint {
+public class Paint {
   var raw: OpaquePointer
 
-  init() {
+  public init() {
     raw = sk_paint_new()
   }
 
@@ -11,7 +11,7 @@ class Paint {
     sk_paint_delete(raw)
   }
 
-  var antialias: Bool {
+  public var antialias: Bool {
     get {
       return sk_paint_is_antialias(raw)
     }
@@ -20,7 +20,7 @@ class Paint {
     }
   }
 
-  var color: UInt32 {
+  public var color: UInt32 {
     get {
       return sk_paint_get_color(raw)
     }
@@ -29,7 +29,7 @@ class Paint {
     }
   }
 
-  var stroke: Bool {
+  public var stroke: Bool {
     get {
       return sk_paint_is_stroke(raw)
     }
@@ -38,7 +38,7 @@ class Paint {
     }
   }
 
-  var strokeWidth: Float {
+  public var strokeWidth: Float {
     get {
       return sk_paint_get_stroke_width(raw)
     }
@@ -47,7 +47,7 @@ class Paint {
     }
   }
 
-  var strokeMiter: Float {
+  public var strokeMiter: Float {
     get {
       return sk_paint_get_stroke_miter(raw)
     }
@@ -56,7 +56,7 @@ class Paint {
     }
   }
 
-  var strokeCap: sk_stroke_cap_t {
+  public var strokeCap: sk_stroke_cap_t {
     get {
       return sk_paint_get_stroke_cap(raw)
     }
@@ -65,7 +65,7 @@ class Paint {
     }
   }
 
-  var strokeJoin: sk_stroke_join_t {
+  public var strokeJoin: sk_stroke_join_t {
     get {
       return sk_paint_get_stroke_join(raw)
     }
@@ -74,15 +74,15 @@ class Paint {
     }
   }
 
-  func setShader(value: Shader) {
+  public func setShader(value: Shader) {
     sk_paint_set_shader(raw, value.raw)
   }
 
-  func setMaskFilter(value: MaskFilter) {
+  public func setMaskFilter(value: MaskFilter) {
     sk_paint_set_maskfilter(raw, value.raw)
   }
 
-  func setXferModeMode(value: sk_xfermode_mode_t) {
+  public func setXferModeMode(value: sk_xfermode_mode_t) {
     sk_paint_set_xfermode_mode(raw, value)
   }
 }

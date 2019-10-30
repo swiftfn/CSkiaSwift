@@ -1,7 +1,7 @@
 import CSkia
 
-class Shader {
-  static func linearGradient(
+public class Shader {
+  public static func linearGradient(
     point0: Point, point1: Point,
     colors: inout [UInt32],
     tileMode: sk_shader_tilemode_t
@@ -11,7 +11,7 @@ class Shader {
     return Shader(raw!)
   }
 
-  static func radialGradient(
+  public static func radialGradient(
     center: Point, radius: Float,
     colors: inout [UInt32],
     tileMode: sk_shader_tilemode_t
@@ -21,7 +21,7 @@ class Shader {
     return Shader(raw!)
   }
 
-  static func sweepGradient(
+  public static func sweepGradient(
     center: Point, radius: Float,
     colors: inout [UInt32]
   ) -> Shader {
@@ -30,7 +30,7 @@ class Shader {
     return Shader(raw!)
   }
 
-  static func conicalGradient(
+  public static func conicalGradient(
     start: Point, startRadius: Float,
     end: Point, endRadius: Float,
     colors: inout [UInt32],
@@ -55,7 +55,7 @@ class Shader {
   }
 
   deinit {
-    sk_shader_unref(raw)
+    unref()
   }
 
   func ref() {

@@ -1,14 +1,21 @@
 import CSkia
 
-struct Rect {
+public struct Rect {
   static func fromSk(_ rect: sk_rect_t) -> Rect {
-    return Rect(left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom)
+    return Rect(rect.left, rect.top, rect.right, rect.bottom)
   }
 
   let left: Float;
   let top: Float;
   let right: Float;
   let bottom: Float;
+
+  public init(_ left: Float, _ top: Float, _ right: Float, _ bottom: Float) {
+    self.left = left
+    self.top = top
+    self.right = right
+    self.bottom = bottom
+  }
 
   func toSk() -> sk_rect_t {
     var r = sk_rect_t()
@@ -20,7 +27,7 @@ struct Rect {
   }
 }
 
-struct IRect {
+public struct IRect {
   static func fromSk(_ rect: sk_irect_t) -> IRect {
     return IRect(left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom)
   }

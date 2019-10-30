@@ -1,6 +1,6 @@
 import CSkia
 
-class PictureRecorder {
+public class PictureRecorder {
   static func new() -> PictureRecorder {
     let raw = sk_picture_recorder_new()
     return PictureRecorder(raw!)
@@ -16,19 +16,19 @@ class PictureRecorder {
     sk_picture_recorder_delete(raw)
   }
 
-  func beginRecording(rect: Rect) -> Canvas {
+  public func beginRecording(rect: Rect) -> Canvas {
     var r = rect.toSk()
     let rawCanvas = sk_picture_recorder_begin_recording(raw, &r)
     return Canvas(raw: rawCanvas!)
   }
 
-  func endRecording() -> Picture {
+  public func endRecording() -> Picture {
     let rawPicture = sk_picture_recorder_end_recording(raw)
     return Picture(rawPicture!)
   }
 }
 
-class Picture {
+public class Picture {
   var raw: OpaquePointer
 
   init(_ raw: OpaquePointer) {
@@ -36,7 +36,7 @@ class Picture {
   }
 
   deinit {
-    sk_picture_unref(raw)
+    unref()
   }
 
   func ref() {
@@ -47,13 +47,13 @@ class Picture {
     sk_picture_unref(raw)
   }
 
-  var uniqueId: UInt32 {
+  public var uniqueId: UInt32 {
     get {
       return sk_picture_get_unique_id(raw)
     }
   }
 
-  var bounds: Rect {
+  public var bounds: Rect {
     get {
       let r = sk_picture_get_bounds(raw)
       return Rect.fromSk(r)

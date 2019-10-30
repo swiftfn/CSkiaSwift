@@ -1,12 +1,12 @@
 import CSkia
 
-class Image {
-  static func rasterCopy(imageInfo: ImageInfo, pixels: UnsafeRawPointer, rowBytes: Int) -> Image {
+public class Image {
+  public static func rasterCopy(imageInfo: ImageInfo, pixels: UnsafeRawPointer, rowBytes: Int) -> Image {
     let raw = sk_image_new_raster_copy(imageInfo.raw, pixels, rowBytes)
     return Image(raw!)
   }
 
-  static func fromEncoded(encoded: Data, subset: IRect) -> Image {
+  public static func fromEncoded(encoded: ImageData, subset: IRect) -> Image {
     var r = subset.toSk()
     let raw = sk_image_new_from_encoded(encoded.raw, &r)
     return Image(raw!)
@@ -19,7 +19,7 @@ class Image {
   }
 
   deinit {
-    sk_image_unref(raw)
+    unref()
   }
 
   func ref() {
@@ -30,24 +30,24 @@ class Image {
     sk_image_unref(raw)
   }
 
-  func encode() -> Data {
+  public func encode() -> ImageData {
     let rawData = sk_image_encode(raw)
-    return Data(rawData!)
+    return ImageData(rawData!)
   }
 
-  var width: Int32 {
+  public var width: Int32 {
     get {
       return sk_image_get_width(raw)
     }
   }
 
-  var height: Int32 {
+  public var height: Int32 {
     get {
       return sk_image_get_height(raw)
     }
   }
 
-  var uniqueId: UInt32 {
+  public var uniqueId: UInt32 {
     get {
       return sk_image_get_unique_id(raw)
     }
