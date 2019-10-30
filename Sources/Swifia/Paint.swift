@@ -75,11 +75,11 @@ class Paint {
   }
 
   func setShader(value: Shader) {
-    sk_paint_set_shader(raw, value.shader)
+    sk_paint_set_shader(raw, value.raw)
   }
 
   func setMaskFilter(value: MaskFilter) {
-    sk_paint_set_maskfilter(raw, value.maskFilter)
+    sk_paint_set_maskfilter(raw, value.raw)
   }
 
   func setXferModeMode(value: sk_xfermode_mode_t) {

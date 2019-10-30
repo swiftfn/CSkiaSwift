@@ -1,12 +1,12 @@
 import CSkia
 
 class Image {
-  static func newRasterCopy(imageInfo: ImageInfo, pixels: UnsafeRawPointer, rowBytes: Int) -> Image {
+  static func rasterCopy(imageInfo: ImageInfo, pixels: UnsafeRawPointer, rowBytes: Int) -> Image {
     let raw = sk_image_new_raster_copy(imageInfo.raw, pixels, rowBytes)
     return Image(raw!)
   }
 
-  static func newFromEncoded(encoded: Data, subset: IRect) -> Image {
+  static func fromEncoded(encoded: Data, subset: IRect) -> Image {
     var r = subset.toSk()
     let raw = sk_image_new_from_encoded(encoded.raw, &r)
     return Image(raw!)

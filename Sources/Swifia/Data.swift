@@ -1,17 +1,17 @@
 import CSkia
 
 class Data {
-  static func newEmpty() -> Data {
+  static func empty() -> Data {
     let raw = sk_data_new_empty()
     return Data(raw!)
   }
 
-  static func newWithCopy(src: UnsafeRawPointer, length: Int) -> Data {
+  static func copy(src: UnsafeRawPointer, length: Int) -> Data {
     let raw = sk_data_new_with_copy(src, length)
     return Data(raw!)
   }
 
-  static func newFromMalloc(memory: UnsafeRawPointer, length: Int) -> Data {
+  static func malloc(memory: UnsafeRawPointer, length: Int) -> Data {
     let raw = sk_data_new_from_malloc(memory, length)
     return Data(raw!)
   }

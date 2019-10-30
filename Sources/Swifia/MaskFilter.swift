@@ -1,7 +1,7 @@
 import CSkia
 
 class MaskFilter {
-  static func newBlur(blurStyle: sk_blurstyle_t, sigma: Float) -> MaskFilter {
+  static func blur(blurStyle: sk_blurstyle_t, sigma: Float) -> MaskFilter {
     let raw = sk_maskfilter_new_blur(blurStyle, sigma)
     return MaskFilter(raw!)
   }

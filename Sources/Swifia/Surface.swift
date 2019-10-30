@@ -1,12 +1,12 @@
 import CSkia
 
 class Surface {
-  static func newRaster(imageInfo: ImageInfo) -> Surface {
+  static func raster(imageInfo: ImageInfo) -> Surface {
     let raw = sk_surface_new_raster(imageInfo.raw, nil)
     return Surface(raw!)
   }
 
-  static func newRasterDirect(imageInfo: ImageInfo, pixels: UnsafeMutableRawPointer, rowBytes: Int) -> Surface {
+  static func rasterDirect(imageInfo: ImageInfo, pixels: UnsafeMutableRawPointer, rowBytes: Int) -> Surface {
     let raw = sk_surface_new_raster_direct(imageInfo.raw, pixels, rowBytes, nil)
     return Surface(raw!)
   }

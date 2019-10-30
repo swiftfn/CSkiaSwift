@@ -1,5 +1,6 @@
 import CSkia
 
+// Canvas has no deinit, thus it can be a struct, no need to be a class
 struct Canvas {
   let raw: OpaquePointer
 
@@ -8,8 +9,12 @@ struct Canvas {
   }
 
   func saveLayer(rect: Rect?, paint: Paint?) {
-    var r = rect?.toSk()
-    sk_canvas_save_layer(raw, r ? &r : nil, paint?.raw)
+    if let r = rect {
+      var cr = r.toSk()
+      sk_canvas_save_layer(raw, &cr, paint?.raw)
+    } else {
+      sk_canvas_save_layer(raw, nil, paint?.raw)
+    }
   }
 
   func restore() {
@@ -81,7 +86,7 @@ struct Canvas {
     sk_canvas_draw_image_rect(raw, image.raw, &s, &d, paint.raw)
   }
 
-  func sk_canvas_draw_picture(picture: Picture, matrix: Matrix, paint: Paint) {
-    sk_canvas_draw_picture(raw, picture, matrix.matrix, paint.raw)
+  func drawPicture(picture: Picture, matrix: Matrix, paint: Paint) {
+    sk_canvas_draw_picture(raw, picture.raw, matrix.raw, paint.raw)
   }
 }
