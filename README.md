@@ -1,6 +1,12 @@
-# Swifia
+# CSkiaSwift - Swift classes wrapper for Skia's C API
 
-Swift classes wrapper for Skia
+[Skia's C API](https://github.com/google/skia/tree/master/experimental/c-api-example)
+is very limited and not actively developed.
+
+Please use [SkiaSwift](https://github.com/swiftfn/SkiaSwift)
+which is based on [SkiaSharp](https://github.com/mono/SkiaSharp)'s
+[C API](https://github.com/mono/skia).
+It has much more features.
 
 See:
 * https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md
@@ -32,7 +38,7 @@ skia_use_system_harfbuzz=false"
 ninja -C out/static
 ```
 
-## Build Swifia for Mac
+## Build CSkiaSwift for Mac
 
 Create symlinks to the built Skia above (`include/c` and `out/mac` directories are used):
 
