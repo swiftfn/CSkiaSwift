@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Swifia",
+    name: "CSkiaSwift",
     dependencies: [
     ],
     targets: [
@@ -14,14 +14,14 @@ let package = Package(
                 .unsafeFlags(["-Lout/mac"])
             ]),
         .target(
-            name: "Swifia",
+            name: "CSkiaSwift",
             dependencies: ["CSkia"]),
         .target(
             name: "DemoCSkia",
             dependencies: ["CSkia"]),
         .target(
-            name: "DemoSwifia",
-            dependencies: ["Swifia"])
+            name: "DemoCSkiaSwift",
+            dependencies: ["CSkiaSwift"])
     ],
     cxxLanguageStandard: .cxx14
 )

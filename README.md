@@ -18,7 +18,7 @@ See also:
 * https://github.com/google/skia/tree/master/experimental/c-api-example
 * https://github.com/elegantchaos/CSkia
 
-## Build Skia
+## Build Skia for Mac
 
 See:
 * https://skia.org/user/download
@@ -35,10 +35,10 @@ skia_use_system_libpng=false skia_use_system_libwebp=false \
 skia_use_system_zlib=false skia_use_system_icu=false \
 skia_use_system_harfbuzz=false"
 
-ninja -C out/static
+ninja -C out/mac
 ```
 
-## Build CSkiaSwift for Mac
+## Build CSkiaSwift
 
 Create symlinks to the built Skia above (`include/c` and `out/mac` directories are used):
 
@@ -60,7 +60,7 @@ swift build -c release
 Run:
 
 ```sh
-swift run Demo
-.build/debug/Demo
-.build/release/Demo
+swift run DemoCSkiaSwift
+.build/debug/DemoCSkiaSwift
+.build/release/DemoCSkiaSwift
 ```
