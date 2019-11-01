@@ -2,7 +2,7 @@
 // https://github.com/elegantchaos/CSkia
 
 import CSkia
-import Swifia
+import CSkiaSwift
 import Foundation
 
 func makeSurface(_ w: Int32, _ h: Int32) -> Surface {
